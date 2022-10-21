@@ -1,0 +1,43 @@
+:root {
+  --bg: #ededed;
+  --ligth: #ffffff;
+  --accent: #333;
+}
+body {
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+.tittle {
+  font-size: 60px;
+  font-family: "Roboto", "sans-serif";
+  color: var(--accent);
+}
+.main-section {
+  display: inherit;
+  width: 100%;
+  justify-content: center;
+}
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+.grid-container {
+  background-color: var(--ligth);
+  height: 600px;
+  width: 600px;
+}
+
+button {
+  height: 80px;
+  width: 220px;
+  border-color: var(--accent);
+}
