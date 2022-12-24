@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
-        "module": "commonjs"
+        "target": "esnext",
+        "watch": true,
+        "module": "commonjs",
+        "lib": ["dom","ES2017"]
+
     },
     "exclude": [
         "node_modules"

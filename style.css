@@ -31,13 +31,34 @@ body {
   justify-content: space-between;
 }
 .grid-container {
+  display: grid;
   background-color: var(--ligth);
   height: 600px;
   width: 600px;
 }
-
+.modeButtons {
+  display: contents;
+  height: inherit;
+  width: inherit;
+  margin: 0;
+  padding: 0;
+}
 button {
   height: 80px;
   width: 220px;
   border-color: var(--accent);
+  color: var(--accent);
+  background-color: var(--ligth);
+}
+.active {
+  border-color: var(--ligth);
+  color: var(--ligth);
+  background-color: var(--accent);
+}
+.colorpicker {
+  height: 80px;
+  width: 220px;
+  margin: 0;
+  padding: 0;
+  border: none;
 }

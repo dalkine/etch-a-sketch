@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="scripts.js" defer></script>
-    <title>eth</title>
+
+    <title>pixel art</title>
   </head>
   <body>
     <div class="header">
@@ -14,11 +15,17 @@
     </div>
     <div class="main-section">
       <div class="control-panel">
-        <button>color picker</button>
-        <button>rainbow mode</button>
-        <button>shader</button>
-        <button>eraser</button>
-        <button>clear</button>
+        <input type="color" class="colorpicker" value="" />
+        <div class="modeButtons">
+          <button id="colorButton" value="color" class="active">
+            color mode
+          </button>
+          <button id="rainbowButton" value="rainbow">rainbow mode</button>
+          <button id="eraserButton" value="eraser">eraser</button>
+          <button id="shaderButton" value="shader">shader</button>
+        </div>
+
+        <button id="clearButton">clear</button>
         <div class="size-bar">
           <p>18x18</p>
         </div>
