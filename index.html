@@ -26,8 +26,15 @@
         </div>
 
         <button id="clearButton">clear</button>
-        <div class="size-bar">
-          <p>18x18</p>
+        <div class="size-slider">
+          <p id="range-label">18x18</p>
+          <input
+            type="range"
+            name="slider"
+            value=""
+            id="slider-bar"
+            min="1"
+            max="64" />
         </div>
       </div>
       <div class="grid-container"></div>

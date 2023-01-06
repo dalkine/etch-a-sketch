@@ -62,3 +62,12 @@ button {
   padding: 0;
   border: none;
 }
+.size-slider {
+  display: contents;
+}
+#slider-bar {
+  width: 220px;
+}
+#range-label {
+  font-size: 25px;
+}

@@ -1,9 +1,9 @@
 var DEFAULTCOLOR = "#000000";
 var DEFAULTMODE = "color";
-var DEFAULTSIZE = 16;
+var DEFAULT_GRID_SIZE = 16;
 var currentcolor = DEFAULTCOLOR;
 var mode = DEFAULTMODE;
-var size = DEFAULTSIZE;
+var grid_size = DEFAULT_GRID_SIZE;
 var mouseDown = false;
 document.querySelector("body").addEventListener("mousedown", function () {
     mouseDown = true;
@@ -12,10 +12,10 @@ document.querySelector("body").addEventListener("mouseup", function () {
     mouseDown = false;
 });
 var gridcontainer = document.querySelector(".grid-container");
-function createGrid(size) {
-    gridcontainer.style.gridTemplateRows = "repeat(".concat(size, ",1fr)");
-    gridcontainer.style.gridTemplateColumns = "repeat(".concat(size, ",1fr)");
-    for (var index = 0; index < size * size; index++) {
+function createGrid(grid_size) {
+    gridcontainer.style.gridTemplateRows = "repeat(".concat(grid_size, ",1fr)");
+    gridcontainer.style.gridTemplateColumns = "repeat(".concat(grid_size, ",1fr)");
+    for (var index = 0; index < grid_size * grid_size; index++) {
         var tile = document.createElement("div");
         tile.addEventListener("mouseover", paint);
         tile.addEventListener("mousedown", paint);
@@ -95,7 +95,7 @@ var clearButton = document.querySelector("#clearButton");
 clearButton.addEventListener("click", clearGrid);
 /*function clearGrid() {
   removeAllChildNodes(gridcontainer);
-  createGrid(size);
+  createGrid(grid_size);
 }
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -108,4 +108,22 @@ function removeAllChildNodes(parent) {
         var c = child[index].setAttribute("style", "backgroudColor:white");
     }
 }
-createGrid(size);
+var sliderBar = document.querySelector("#slider-bar");
+sliderBar.addEventListener("change", setGridSize);
+function setGridSize(e) {
+    grid_size = e.target.value;
+    setSlider(grid_size);
+    clearGrid();
+    createGrid(grid_size);
+}
+function setSlider(size) {
+    var sliderLabel = document.querySelector("#range-label");
+    var slider = document.querySelector("#slider-bar");
+    sliderLabel.textContent = "".concat(size, " x ").concat(size);
+    slider.setAttribute("value", "".concat(size));
+}
+function main() {
+    setSlider(grid_size);
+    createGrid(grid_size);
+}
+main();

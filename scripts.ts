@@ -1,11 +1,11 @@
 const DEFAULTCOLOR = "#000000";
 const DEFAULTMODE = "color";
-let DEFAULTSIZE = 16;
+let DEFAULT_GRID_SIZE = 16;
 
 let currentcolor = DEFAULTCOLOR;
 
 let mode = DEFAULTMODE;
-let size = DEFAULTSIZE;
+let grid_size = DEFAULT_GRID_SIZE;
 
 let mouseDown = false;
 document.querySelector("body").addEventListener("mousedown", () => {
@@ -17,10 +17,10 @@ document.querySelector("body").addEventListener("mouseup", () => {
 
 let gridcontainer = document.querySelector<HTMLElement>(".grid-container");
 
-function createGrid(size: number) {
-  gridcontainer.style.gridTemplateRows = `repeat(${size},1fr)`;
-  gridcontainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
-  for (let index = 0; index < size * size; index++) {
+function createGrid(grid_size: number) {
+  gridcontainer.style.gridTemplateRows = `repeat(${grid_size},1fr)`;
+  gridcontainer.style.gridTemplateColumns = `repeat(${grid_size},1fr)`;
+  for (let index = 0; index < grid_size * grid_size; index++) {
     const tile = document.createElement("div");
     tile.addEventListener("mouseover", paint);
     tile.addEventListener("mousedown", paint);
@@ -105,7 +105,7 @@ let clearButton = document.querySelector<HTMLElement>("#clearButton");
 clearButton.addEventListener("click", clearGrid);
 /*function clearGrid() {
   removeAllChildNodes(gridcontainer);
-  createGrid(size);
+  createGrid(grid_size);
 }
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -118,4 +118,24 @@ function removeAllChildNodes(parent) {
     let c = child[index].setAttribute("style", "backgroudColor:white");
   }
 }
-createGrid(size);
+let sliderBar = document.querySelector<HTMLElement>("#slider-bar");
+sliderBar.addEventListener("change", setGridSize);
+function setGridSize(e) {
+  grid_size = e.target.value;
+  setSlider(grid_size);
+  clearGrid();
+  createGrid(grid_size);
+}
+
+function setSlider(size: number) {
+  let sliderLabel = document.querySelector<HTMLElement>("#range-label");
+  let slider = document.querySelector<HTMLElement>("#slider-bar");
+  sliderLabel.textContent = `${size} x ${size}`;
+  slider.setAttribute("value", `${size}`);
+}
+
+function main() {
+  setSlider(grid_size);
+  createGrid(grid_size);
+}
+main();
